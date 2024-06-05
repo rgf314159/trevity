@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geospatial Data Visualization</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.css" type="text/css">
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- SweetAlert -->
+</head>
+<body>
+    <div class="container">
+        <h1>Geospatial Data Visualization - AL (Classified by avgcmm)</h1>
+        <div>
+            {{ script|safe }}
+            {{ div|safe }}
+        </div>
+        <h2>Data Grid View</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>County</th>
+                    <th>Census Tract</th>
+                    <th>Average Commute Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in fields %}
+                    <tr>
+                        <td>{{ row['stt'] }}</td>
+                        <td>{{ row['cnty'] }}</td>
+                        <td>{{ row['lctn'] }}</td>
+                        <td>{{ row['avgcmm'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            {{ pagination.links }}
+        </div>
+    </div>
+</body>
+</html>
